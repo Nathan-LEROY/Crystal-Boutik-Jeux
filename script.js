@@ -925,9 +925,12 @@ function obtenirChoixCadeaux() {
             nombreGagnants,
 
             unSeulGain:
-                $("unSeulGain").checked,
+    $("unSeulGain").checked,
 
-            lots,
+keywords:
+    [...state.keywords],
+
+lots,
 
             conditions,
 
