@@ -1112,7 +1112,13 @@ lots,
             return;
         }
 
-
+      state.keywords =
+    Array.isArray(
+        state.currentGame.keywords
+    )
+        ? [...state.currentGame.keywords]
+        : [];
+       
         $("titreJeuActif").textContent =
             `🎮 ${state.currentGame.nom}`;
 
