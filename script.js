@@ -3695,8 +3695,13 @@ function tirerUnChoix(choice) {
      * Récupérer le cadeau correspondant.
      */
 
-    const lotIndex =
-        choice.charCodeAt(0) - 65;
+    const choixDisponibles =
+    obtenirChoixCadeaux();
+
+const lotIndex =
+    choixDisponibles.indexOf(
+        String(choice).toUpperCase()
+    );
 
     const lot =
         state.currentGame &&
