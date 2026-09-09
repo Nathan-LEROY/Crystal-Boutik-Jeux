@@ -1,0 +1,919 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Crystal Boutik - Jeux-Concours</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<header class="header">
+    <div class="header-content">
+        <div>
+            <h1>CRYSTAL BOUTIK</h1>
+            <p>🎮 Gestionnaire de jeux-concours</p>
+        </div>
+
+        <div class="header-badge">
+            VERSION 2
+        </div>
+    </div>
+</header>
+
+
+<main class="container">
+
+    <!-- ======================================================
+         ACCUEIL
+    ======================================================= -->
+
+    <section id="accueil" class="page-section active">
+
+        <div class="hero-card">
+            <div class="hero-icon">🎮</div>
+
+            <h2>Jeux-concours Crystal Boutik</h2>
+
+            <p>
+                Crée, configure et organise facilement tes différents
+                jeux-concours.
+            </p>
+
+            <button id="btnNouveauJeu" class="btn btn-primary btn-large">
+                ➕ NOUVEAU JEU
+            </button>
+        </div>
+
+
+        <div class="quick-grid">
+
+            <button id="btnOuvrirJeu" class="quick-card">
+                <span>📂</span>
+                <strong>Ouvrir un jeu</strong>
+                <small>Continuer un jeu enregistré</small>
+            </button>
+
+            <button id="btnHistorique" class="quick-card">
+                <span>📜</span>
+                <strong>Historique</strong>
+                <small>Voir les anciens tirages</small>
+            </button>
+
+        </div>
+
+
+        <div class="info-card">
+
+            <h3>💡 Comment ça fonctionne ?</h3>
+
+            <div class="steps">
+
+                <div class="step">
+                    <span>1</span>
+                    <div>
+                        <strong>Créer le jeu</strong>
+                        <p>Choisis le type de concours.</p>
+                    </div>
+                </div>
+
+                <div class="step">
+                    <span>2</span>
+                    <div>
+                        <strong>Configurer</strong>
+                        <p>Définis les lots et les conditions.</p>
+                    </div>
+                </div>
+
+                <div class="step">
+                    <span>3</span>
+                    <div>
+                        <strong>Importer</strong>
+                        <p>Ajoute les participants.</p>
+                    </div>
+                </div>
+
+                <div class="step">
+                    <span>4</span>
+                    <div>
+                        <strong>Tirer au sort</strong>
+                        <p>L'application sélectionne les gagnants.</p>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- ======================================================
+         CREATION DU JEU
+    ======================================================= -->
+
+    <section id="creationJeu" class="page-section">
+
+        <div class="section-header">
+
+            <button id="btnRetourAccueil" class="btn btn-secondary">
+                ← Retour
+            </button>
+
+            <div>
+                <h2>➕ Nouveau jeu</h2>
+                <p>Configure ton prochain jeu-concours.</p>
+            </div>
+
+        </div>
+
+
+        <!-- INFORMATIONS -->
+
+        <div class="card">
+
+            <h3>📝 Informations du jeu</h3>
+
+            <div class="form-group">
+
+                <label for="nomJeu">
+                    Nom du jeu
+                </label>
+
+                <input
+                    type="text"
+                    id="nomJeu"
+                    placeholder="Ex : Grand jeu de lancement Crystal Boutik"
+                >
+
+            </div>
+
+
+            <div class="form-group">
+
+                <label for="descriptionJeu">
+                    Description
+                </label>
+
+                <textarea
+                    id="descriptionJeu"
+                    rows="4"
+                    placeholder="Décris brièvement le jeu..."
+                ></textarea>
+
+            </div>
+
+        </div>
+
+
+        <!-- TYPE DE JEU -->
+
+        <div class="card">
+
+            <h3>🎯 Type de jeu</h3>
+
+            <p class="help-text">
+                Le choix du type détermine les options disponibles.
+            </p>
+
+
+            <div class="game-types">
+
+                <label class="game-type">
+
+                    <input
+                        type="radio"
+                        name="typeJeu"
+                        value="simple"
+                        checked
+                    >
+
+                    <span class="game-type-content">
+                        <span class="game-type-icon">🎲</span>
+
+                        <strong>Tirage simple</strong>
+
+                        <small>
+                            Tous les participants entrent dans un même tirage.
+                        </small>
+                    </span>
+
+                </label>
+
+
+                <label class="game-type">
+
+                    <input
+                        type="radio"
+                        name="typeJeu"
+                        value="cadeaux"
+                    >
+
+                    <span class="game-type-content">
+                        <span class="game-type-icon">🎁</span>
+
+                        <strong>Choix de cadeaux</strong>
+
+                        <small>
+                            Exemple : A, B ou C.
+                        </small>
+                    </span>
+
+                </label>
+
+
+                <label class="game-type">
+
+                    <input
+                        type="radio"
+                        name="typeJeu"
+                        value="question"
+                    >
+
+                    <span class="game-type-content">
+                        <span class="game-type-icon">❓</span>
+
+                        <strong>Question / réponse</strong>
+
+                        <small>
+                            Seuls les participants ayant la bonne réponse sont retenus.
+                        </small>
+                    </span>
+
+                </label>
+
+
+                <label class="game-type">
+
+                    <input
+                        type="radio"
+                        name="typeJeu"
+                        value="nombre"
+                    >
+
+                    <span class="game-type-content">
+                        <span class="game-type-icon">🔢</span>
+
+                        <strong>Deviner un nombre</strong>
+
+                        <small>
+                            Les participants proposent un nombre.
+                        </small>
+                    </span>
+
+                </label>
+
+
+                <label class="game-type">
+
+                    <input
+                        type="radio"
+                        name="typeJeu"
+                        value="mission"
+                    >
+
+                    <span class="game-type-content">
+                        <span class="game-type-icon">🔥</span>
+
+                        <strong>Mission spéciale</strong>
+
+                        <small>
+                            Jeu basé sur une mission particulière.
+                        </small>
+                    </span>
+
+                </label>
+
+
+                <label class="game-type">
+
+                    <input
+                        type="radio"
+                        name="typeJeu"
+                        value="personnalise"
+                    >
+
+                    <span class="game-type-content">
+                        <span class="game-type-icon">⚙️</span>
+
+                        <strong>Jeu personnalisé</strong>
+
+                        <small>
+                            Configuration libre.
+                        </small>
+                    </span>
+
+                </label>
+
+            </div>
+
+        </div>
+
+
+        <!-- OPTIONS DU TYPE -->
+
+        <div id="optionsJeu" class="card">
+
+            <h3>⚙️ Configuration du jeu</h3>
+
+            <div id="contenuOptionsJeu"></div>
+
+        </div>
+
+
+        <!-- GAGNANTS -->
+
+        <div class="card">
+
+            <h3>🏆 Gagnants</h3>
+
+            <div class="form-grid">
+
+                <div class="form-group">
+
+                    <label for="nombreGagnants">
+                        Nombre de gagnants
+                    </label>
+
+                    <input
+                        type="number"
+                        id="nombreGagnants"
+                        min="1"
+                        value="1"
+                    >
+
+                </div>
+
+            </div>
+
+
+            <label class="checkbox-label">
+
+                <input
+                    type="checkbox"
+                    id="unSeulGain"
+                    checked
+                >
+
+                <span>
+                    Un participant ne peut gagner qu'une seule fois
+                </span>
+
+            </label>
+
+        </div>
+
+
+        <!-- LOTS -->
+
+        <div class="card">
+
+            <div class="card-title-row">
+
+                <div>
+                    <h3>🎁 Lots / cadeaux</h3>
+                    <p class="help-text">
+                        Ajoute les récompenses du jeu.
+                    </p>
+                </div>
+
+                <button
+                    id="btnAjouterLot"
+                    class="btn btn-secondary"
+                >
+                    ➕ Ajouter un lot
+                </button>
+
+            </div>
+
+
+            <div id="listeLots"></div>
+
+        </div>
+
+
+        <!-- CONDITIONS -->
+
+        <div class="card">
+
+            <div class="card-title-row">
+
+                <div>
+                    <h3>📋 Conditions de participation</h3>
+                    <p class="help-text">
+                        Ces conditions serviront de référence pour la validation.
+                    </p>
+                </div>
+
+                <button
+                    id="btnAjouterCondition"
+                    class="btn btn-secondary"
+                >
+                    ➕ Ajouter
+                </button>
+
+            </div>
+
+
+            <div id="listeConditions"></div>
+
+        </div>
+
+
+        <!-- MISSION SPECIALE -->
+
+        <div class="card mission-card">
+
+            <div class="card-title-row">
+
+                <div>
+                    <h3>🔥 Mission spéciale</h3>
+
+                    <p class="help-text">
+                        Fonction facultative.
+                    </p>
+                </div>
+
+                <label class="switch">
+
+                    <input
+                        type="checkbox"
+                        id="activerMission"
+                    >
+
+                    <span class="slider"></span>
+
+                </label>
+
+            </div>
+
+
+            <div id="configurationMission" class="hidden">
+
+                <div class="form-group">
+
+                    <label for="conditionMission">
+                        Condition de la mission
+                    </label>
+
+                    <input
+                        type="text"
+                        id="conditionMission"
+                        placeholder="Ex : inviter 5 amis à suivre la page"
+                    >
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label for="recompenseMission">
+                        Récompense
+                    </label>
+
+                    <input
+                        type="text"
+                        id="recompenseMission"
+                        placeholder="Ex : 10 000 AR"
+                    >
+
+                </div>
+
+
+                <label class="checkbox-label">
+
+                    <input
+                        type="checkbox"
+                        id="preuveMission"
+                        checked
+                    >
+
+                    <span>
+                        Une preuve est obligatoire
+                    </span>
+
+                </label>
+
+            </div>
+
+        </div>
+
+
+        <div class="action-center">
+
+            <button
+                id="btnCreerJeu"
+                class="btn btn-primary btn-large"
+            >
+                🚀 CRÉER LE JEU
+            </button>
+
+        </div>
+
+    </section>
+
+
+    <!-- ======================================================
+         JEU
+    ======================================================= -->
+
+    <section id="jeuActif" class="page-section">
+
+        <div class="section-header">
+
+            <button
+                id="btnRetourCreation"
+                class="btn btn-secondary"
+            >
+                ← Retour
+            </button>
+
+            <div>
+
+                <h2 id="titreJeuActif">
+                    🎮 Jeu
+                </h2>
+
+                <p id="descriptionJeuActif"></p>
+
+            </div>
+
+        </div>
+
+
+        <!-- RESUME -->
+
+        <div class="stats-grid">
+
+            <div class="stat-card">
+                <span>👥</span>
+                <strong id="statTotal">0</strong>
+                <small>Participants</small>
+            </div>
+
+            <div class="stat-card">
+                <span>🎯</span>
+                <strong id="statEligibles">0</strong>
+                <small>Éligibles</small>
+            </div>
+
+            <div class="stat-card">
+                <span>🏆</span>
+                <strong id="statGagnants">0</strong>
+                <small>Gagnants</small>
+            </div>
+
+        </div>
+
+
+        <!-- IMPORT -->
+
+        <div class="card">
+
+            <h3>📥 Participants</h3>
+
+            <p class="help-text">
+                Importe un fichier CSV contenant les participants.
+            </p>
+
+
+            <div class="upload-box">
+
+                <input
+                    type="file"
+                    id="participantsFile"
+                    accept=".csv,text/csv"
+                >
+
+                <label for="participantsFile">
+                    📂 Choisir le fichier CSV
+                </label>
+
+            </div>
+
+
+            <div class="button-row">
+
+                <button
+                    id="btnDemoParticipants"
+                    class="btn btn-secondary"
+                >
+                    🧪 Charger une démo
+                </button>
+
+                <button
+                    id="btnExporterParticipants"
+                    class="btn btn-secondary"
+                >
+                    📤 Exporter
+                </button>
+
+                <button
+                    id="btnViderParticipants"
+                    class="btn btn-danger"
+                >
+                    🗑️ Vider
+                </button>
+
+            </div>
+
+
+            <div
+                id="etatImport"
+                class="status-box"
+            >
+                Aucun participant chargé.
+            </div>
+
+        </div>
+
+
+        <!-- VALIDATION -->
+
+        <div class="card">
+
+            <div class="card-title-row">
+
+                <div>
+                    <h3>✅ Validation</h3>
+
+                    <p class="help-text">
+                        Vérifie les participants avant le tirage.
+                    </p>
+                </div>
+
+                <button
+                    id="btnValiderParticipants"
+                    class="btn btn-primary"
+                >
+                    ✅ Valider
+                </button>
+
+            </div>
+
+
+            <div class="validation-options">
+
+                <label class="checkbox-label">
+
+                    <input
+                        type="checkbox"
+                        id="supprimerDoublons"
+                        checked
+                    >
+
+                    <span>
+                        Supprimer les doublons
+                    </span>
+
+                </label>
+
+
+                <label class="checkbox-label">
+
+                    <input
+                        type="checkbox"
+                        id="exigerChoix"
+                    >
+
+                    <span>
+                        Exiger un choix lorsque le jeu utilise des cadeaux
+                    </span>
+
+                </label>
+
+            </div>
+
+
+            <div id="resultatValidation"></div>
+
+        </div>
+
+
+        <!-- LISTE PARTICIPANTS -->
+
+        <div class="card">
+
+            <div class="card-title-row">
+
+                <div>
+                    <h3>👥 Liste des participants</h3>
+                    <p class="help-text">
+                        Les participants éligibles apparaîtront ici.
+                    </p>
+                </div>
+
+                <span
+                    id="badgeParticipants"
+                    class="badge"
+                >
+                    0
+                </span>
+
+            </div>
+
+
+            <div id="listeParticipants" class="participants-list">
+
+                <div class="empty-state">
+                    Aucun participant.
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- ZONE SPECIFIQUE CADEAUX -->
+
+        <div
+            id="zoneChoixCadeaux"
+            class="card hidden"
+        >
+
+            <h3>🎁 Tirage par cadeau</h3>
+
+            <div id="listeChoixCadeaux"></div>
+
+        </div>
+
+
+        <!-- TIRAGE -->
+
+        <div class="card draw-card">
+
+            <div class="draw-icon">
+                🎲
+            </div>
+
+            <h3>Tirage au sort</h3>
+
+            <p>
+                Lorsque les participants sont validés,
+                lance le tirage.
+            </p>
+
+
+            <button
+                id="btnTirage"
+                class="btn btn-primary btn-large"
+            >
+                🎲 LANCER LE TIRAGE
+            </button>
+
+
+            <div
+                id="resultatTirage"
+                class="draw-result hidden"
+            ></div>
+
+        </div>
+
+
+        <!-- MISSION -->
+
+        <div
+            id="zoneMissionJeu"
+            class="card mission-card hidden"
+        >
+
+            <div class="card-title-row">
+
+                <div>
+
+                    <h3>🔥 Mission spéciale</h3>
+
+                    <p id="missionDescription"></p>
+
+                </div>
+
+                <span class="mission-prize">
+                    <span id="missionRecompense">—</span>
+                </span>
+
+            </div>
+
+
+            <div class="upload-box">
+
+                <input
+                    type="file"
+                    id="missionFile"
+                    accept=".csv,text/csv"
+                >
+
+                <label for="missionFile">
+                    📂 Importer les participants validés
+                </label>
+
+            </div>
+
+
+            <div
+                id="etatMission"
+                class="status-box"
+            >
+                Aucun participant Mission spéciale.
+            </div>
+
+
+            <button
+                id="btnTirageMission"
+                class="btn btn-mission btn-large"
+            >
+                🔥 TIRER LA MISSION SPÉCIALE
+            </button>
+
+
+            <div
+                id="resultatMission"
+                class="draw-result hidden"
+            ></div>
+
+        </div>
+
+    </section>
+
+
+    <!-- ======================================================
+         HISTORIQUE
+    ======================================================= -->
+
+    <section id="historique" class="page-section">
+
+        <div class="section-header">
+
+            <button
+                id="btnRetourAccueilHistorique"
+                class="btn btn-secondary"
+            >
+                ← Retour
+            </button>
+
+            <div>
+
+                <h2>📜 Historique</h2>
+
+                <p>
+                    Historique des jeux et des gagnants.
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <div
+            id="listeHistorique"
+            class="history-list"
+        >
+
+            <div class="empty-state">
+                Aucun tirage enregistré.
+            </div>
+
+        </div>
+
+
+        <div class="action-center">
+
+            <button
+                id="btnEffacerHistorique"
+                class="btn btn-danger"
+            >
+                🗑️ Effacer l'historique
+            </button>
+
+        </div>
+
+    </section>
+
+</main>
+
+
+<footer class="footer">
+
+    <p>
+        CRYSTAL BOUTIK — Gestionnaire de jeux-concours
+    </p>
+
+    <small>
+        Version 2
+    </small>
+
+</footer>
+
+
+<div
+    id="toast"
+    class="toast"
+></div>
+
+
+<script src="script.js"></script>
+
+</body>
+</html>
