@@ -2095,7 +2095,38 @@ function importerCommentairesFacebook() {
             }
         );
 
+  /* MOTS-CLÉS DE PARTICIPATION */
+if (
+    state.keywords &&
+    state.keywords.length > 0
+) {
 
+    list.forEach(
+        participant => {
+
+            const motsTrouves =
+                detectMotsCles(
+                    participant
+                );
+
+            participant.keywords =
+                motsTrouves;
+
+            if (
+                motsTrouves.length === 0
+            ) {
+                participant.eligible =
+                    false;
+
+                participant.reason =
+                    "Aucun mot-clé de participation trouvé.";
+            }
+
+        }
+    );
+
+}
+       
         const type =
             state.currentGame.type;
 
