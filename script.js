@@ -3637,14 +3637,24 @@ function tirerUnChoix(choice) {
      */
 
     let participants =
-        state.eligibleParticipants.filter(
-            participant =>
+    state.eligibleParticipants.filter(
+        participant => {
+
+            const choixDetecte =
+                participant.choice ||
+                detectChoice(
+                    participant
+                );
+
+            return (
                 String(
-                    participant.choice
+                    choixDetecte
                 )
                     .toUpperCase() === choice
-        );
+            );
 
+        }
+    );
 
     /*
      * Si "un seul gain" est activé,
