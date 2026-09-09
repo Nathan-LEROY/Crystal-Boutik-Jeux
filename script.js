@@ -2149,6 +2149,41 @@ if (
 
     }
 
+   /* =====================================================
+   DETECTION MOTS-CLES
+===================================================== */
+
+function detectMotsCles(participant) {
+
+    if (
+        !state.keywords ||
+        !state.keywords.length
+    ) {
+        return [];
+    }
+
+    const texte =
+        `${participant.comment || ""} ${participant.name || ""}`
+            .toLowerCase();
+
+    return state.keywords.filter(
+        motCle => {
+
+            const mot =
+                String(motCle || "")
+                    .trim()
+                    .toLowerCase();
+
+            if (!mot) {
+                return false;
+            }
+
+            return texte.includes(mot);
+
+        }
+    );
+
+}
 
     /* =====================================================
        DETECTION CHOIX
