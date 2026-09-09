@@ -1631,7 +1631,140 @@ lots,
 
     }
 
+  /* =====================================================
+   IMPORT COMMENTAIRES FACEBOOK
+===================================================== */
 
+function importerCommentairesFacebook() {
+
+    const textarea =
+        $("commentairesFacebook");
+
+    const commentaires =
+        textarea.value.trim();
+
+    if (!commentaires) {
+
+        showToast(
+            "⚠️ Aucun commentaire à importer."
+        );
+
+        return;
+    }
+
+    const lignes =
+        commentaires
+            .split(/\r?\n/)
+            .map(
+                ligne => ligne.trim()
+            )
+            .filter(Boolean);
+
+    const participants = [];
+
+    lignes.forEach(
+        (ligne, index) => {
+
+            let nom = "";
+            let commentaire = "";
+
+            /*
+             * Format :
+             * Nom : commentaire
+             * Nom - commentaire
+             * Nom | commentaire
+             */
+
+            const separation =
+                ligne.match(
+                    /^(.+?)\s*(?::|-|\|)\s*(.+)$/
+                );
+
+            if (separation) {
+
+                nom =
+                    separation[1].trim();
+
+                commentaire =
+                    separation[2].trim();
+
+            } else {
+
+                nom =
+                    `Participant ${index + 1}`;
+
+                commentaire =
+                    ligne;
+            }
+
+            if (!nom || !commentaire) {
+                return;
+            }
+
+            participants.push({
+
+                id:
+                    `fb-${Date.now()}-${index}-${Math.random()
+                        .toString(36)
+                        .slice(2, 8)}`,
+
+                name:
+                    nom,
+
+                comment:
+                    commentaire,
+
+                choice:
+                    "",
+
+                answer:
+                    "",
+
+                number:
+                    "",
+
+                eligible:
+                    true,
+
+                reason:
+                    ""
+
+            });
+
+        }
+    );
+
+    state.participants =
+        participants;
+
+    state.eligibleParticipants =
+        [];
+
+    state.winners =
+        [];
+
+    state.giftResults =
+        [];
+
+    $("etatImportCommentaires").textContent =
+        `💬 ${participants.length} commentaire(s) importé(s).`;
+
+    $("etatImport").textContent =
+        `📥 ${participants.length} participant(s) importé(s) depuis Facebook.`;
+
+    updateStats();
+
+    renderParticipants();
+
+    $("resultatValidation").innerHTML =
+        "";
+
+    showToast(
+        `✅ ${participants.length} participant(s) importé(s).`
+    );
+
+}
+   
     /* =====================================================
        DEMO
     ====================================================== */
@@ -4541,8 +4674,17 @@ $("btnAjouterMotCle")
 
                 }
             );
+ 
+   /* -----------------------------------------------
+   IMPORT COMMENTAIRES FACEBOOK
+    ------------------------------------------------ */
 
-
+$("btnImporterCommentaires")
+    .addEventListener(
+        "click",
+        importerCommentairesFacebook
+    );
+       
         $("missionFile")
             .addEventListener(
                 "change",
