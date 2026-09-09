@@ -20,6 +20,7 @@
     missionParticipants: [],
     winners: [],
     giftResults: [],
+    keywords: [],
     history: []
 };
 
@@ -706,6 +707,81 @@
 
     }
 
+   /* =====================================================
+   AFFICHER LES MOTS-CLES
+===================================================== */
+
+function afficherMotsCles() {
+
+    const container =
+        $("listeMotsCles");
+
+    if (!container) {
+        return;
+    }
+
+    if (
+        !state.keywords ||
+        state.keywords.length === 0
+    ) {
+
+        container.innerHTML = `
+            <div class="empty-state">
+                Aucun mot-clé ajouté.
+            </div>
+        `;
+
+        return;
+    }
+
+    container.innerHTML = "";
+
+    state.keywords.forEach(
+        (motCle, index) => {
+
+            const div =
+                document.createElement("div");
+
+            div.className =
+                "keyword-item";
+
+            div.innerHTML = `
+
+                <span>
+                    🔑 ${escapeHTML(motCle)}
+                </span>
+
+                <button
+                    type="button"
+                    class="btn btn-danger btn-supprimer-mot-cle"
+                >
+                    Supprimer
+                </button>
+
+            `;
+
+            container.appendChild(div);
+
+            div.querySelector(
+                ".btn-supprimer-mot-cle"
+            ).addEventListener(
+                "click",
+                () => {
+
+                    state.keywords.splice(
+                        index,
+                        1
+                    );
+
+                    afficherMotsCles();
+
+                }
+            );
+
+        }
+    );
+}
+   
 /* =====================================================
    GENERER LES CHOIX DES CADEAUX
 ===================================================== */
@@ -4318,7 +4394,52 @@ function enregistrerHistorique() {
                     ajouterLot()
             );
 
+        /* -----------------------------------------------
+   MOTS-CLES DE PARTICIPATION
+------------------------------------------------ */
 
+$("btnAjouterMotCle")
+    .addEventListener(
+        "click",
+        () => {
+
+            const input =
+                $("motCleParticipation");
+
+            const motCle =
+                input.value.trim();
+
+            if (!motCle) {
+                alert(
+                    "Veuillez saisir un mot-clé."
+                );
+                return;
+            }
+
+            const existe =
+                state.keywords.some(
+                    mot =>
+                        mot.toLowerCase() ===
+                        motCle.toLowerCase()
+                );
+
+            if (existe) {
+                alert(
+                    "Ce mot-clé existe déjà."
+                );
+                return;
+            }
+
+            state.keywords.push(
+                motCle
+            );
+
+            input.value = "";
+
+            afficherMotsCles();
+        }
+    );
+       
         /* -----------------------------------------------
            CONDITIONS
         ------------------------------------------------ */
