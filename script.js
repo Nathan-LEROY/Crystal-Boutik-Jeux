@@ -1642,6 +1642,8 @@ function importerCommentairesFacebook() {
     const textarea =
         $("commentairesFacebook");
 
+   console.log("📝 Zone commentaires :", textarea);
+   
     const commentaires =
         textarea.value.trim();
 
