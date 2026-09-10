@@ -1637,6 +1637,8 @@ lots,
 
 function importerCommentairesFacebook() {
 
+    console.log("🟢 Clic sur Importer les commentaires");
+   
     const textarea =
         $("commentairesFacebook");
 
