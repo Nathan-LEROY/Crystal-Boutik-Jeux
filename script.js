@@ -4724,7 +4724,8 @@ $("btnAjouterMotCle")
    /* -----------------------------------------------
    IMPORT COMMENTAIRES FACEBOOK
     ------------------------------------------------ */
-
+console.log("✅ Listener Facebook installé");
+       
 $("btnImporterCommentaires")
     .addEventListener(
         "click",
