@@ -3304,19 +3304,19 @@ const nombreGagnantsUniques =
                 </strong>
 
                 <div>
-                    🎁 Total :
-                    <strong>
-                        ${nombreGagnantsUniques}
-                    </strong>
-                    cadeau(x)
-                </div>
+    🎁 Total :
+    <strong>
+        ${total}
+    </strong>
+    cadeau(x)
+</div>
 
-                <div>
-                    👥 Gagnants :
-                    <strong>
-                        ${total}
-                    </strong>
-                </div>
+<div>
+    👥 Gagnants :
+    <strong>
+        ${nombreGagnantsUniques}
+    </strong>
+</div>
 
             </div>
 
